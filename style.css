@@ -1,0 +1,13 @@
+body {
+    background-color: lavender;
+}
+
+.hidden{
+    display: none;
+}
+.textbox{
+    display: flex;
+}
+.text {
+
+}
