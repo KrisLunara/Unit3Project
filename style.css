@@ -9,6 +9,8 @@ body {
     display: flex;
     max-height: 75px;
 }
+.upgrades{
+}
 
 .item{
     max-width: 150px;
