@@ -11,10 +11,8 @@ const reset = document.getElementById('reset');
 //Values and Upgrades
 let clicks = 0;
 let totalClicks = 0;
-let upgradeTen = false;
 const TenButton = document.getElementById('Balloon');
 const DubButton = document.getElementById('BobbleHead')
-let upgradeDub = false;
 let Dub = 0;
 let Ten = 0;
 let DubPrice = 20;
@@ -22,20 +20,10 @@ let TenPrice = 100;
 
 //Main Functions
 function clicker (){
-    if (upgradeDub === false && upgradeTen === false){
-        clicks = clicks + 1;
-        totalClicks = totalClicks +1;
-    } else if (upgradeDub === true && upgradeTen === true){
-        clicks = clicks + (Dub + Ten);
-        totalClicks = totalClicks + 12;
-    } else if (upgradeTen === true && upgradeDub === false){
-        clicks = clicks + Ten;
-        totalClicks = totalClicks + 10;
-    }else if (upgradeDub === true && upgradeTen === false){
-        clicks = clicks + Dub;
-        totalClicks = totalClicks + 2;
-    }
+    clicks = clicks + 1 + Dub + Ten;
+    totalClicks = totalClicks + 1 + Dub + Ten;
 }
+
 function gameReset(){
     clicks = 0;
     totalClicks = 0;
@@ -70,9 +58,8 @@ function salmonIcon() {
 //Shop
 function shopStart(){
     DubButton.addEventListener('click', function(){
-        if (DubPrice <= 50){
+        if (DubPrice <= 60){
             if (clicks >= DubPrice){
-                upgradeDub = true;
                 Dub = Dub + 2;
                 clicks = clicks - DubPrice;
                 DubPrice = DubPrice + 4;
@@ -80,15 +67,14 @@ function shopStart(){
                 counter.innerHTML= `${clicks} Power Eggs`;
                 TC.innerHTML= `${totalClicks} All Time Power Eggs`
             }
-        } else if (DubPrice >= 50){
+        } else if (DubPrice >= 65){
             DubButton.innerHTML= `Max`
         }
     })
     TenButton.addEventListener('click', function(){
         if (TenPrice <= 500){
             if (clicks >= TenPrice){
-                upgradeTen = true;
-                Ten = Dub + 2;
+                Ten = Ten + 10;
                 clicks = clicks - TenPrice;
                 TenPrice = TenPrice + 10;
                 TenButton.innerHTML= `Purchase for ${TenPrice}`
